@@ -1,9 +1,9 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using YetAnotherEramakerSimulator.ViewModels;
+using YaEmuera.ViewModels;
 
-namespace YetAnotherEramakerSimulator;
+namespace YaEmuera;
 
 public class ViewLocator : IDataTemplate
 {

@@ -1,6 +1,6 @@
 ﻿using ReactiveUI;
 
-namespace YetAnotherEramakerSimulator.ViewModels;
+namespace YaEmuera.ViewModels;
 
 public class ViewModelBase : ReactiveObject
 {

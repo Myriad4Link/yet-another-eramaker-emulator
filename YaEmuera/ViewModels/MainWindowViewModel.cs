@@ -1,4 +1,4 @@
-﻿namespace YetAnotherEramakerSimulator.ViewModels;
+﻿namespace YaEmuera.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {

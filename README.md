@@ -1,4 +1,4 @@
-﻿# yaeramaker - Yet Another eramaker Simulator
+﻿# yaEmuera - Yet Another eramaker Emulator
 ## ⚠️Very early development stage, most functions are not implemented yet.⚠️
 
 ---

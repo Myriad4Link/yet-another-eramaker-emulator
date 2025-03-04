@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:YaEmuera.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="YaEmuera.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="yaEmuera"
+        DataContext="{StaticResource Composition}">
+
+
+    <Design.DataContext>
+        <!-- 这里我有意见😡 -->
+        <!-- 因为DI是发生在运行时的，所以在预览阶段Preview是没法被注入的。 -->
+        <!-- 所以要不就放弃Preview，要不就花点功夫写Mock类。 -->
+        <!-- 两种都很烦人啊但是😡😡😡 -->
+        <vm:MainWindowViewModel />
+        <!-- _____ -->
+        <!-- |　D | -->
+        <!-- |　I |_________ -->
+        <!-- | 缠 |   预    | -->
+        <!-- | 运 |   览　  | -->
+        <!-- | 行 |　 未    | -->
+        <!-- ‾‾‾‾|　 至    |____ -->
+        <!--     |  MOCK  | 弃 | -->
+        <!--     |　 先    | 留 | -->
+        <!--     |　 迎    | 皆 | -->
+        <!--     ‾‾‾‾‾‾‾‾‾| 叹 |      | -->
+        <!--              | 声 |      | -->
+        <!--              ‾‾‾‾‾       | -->
+        <!--                         最 -->
+        <!--                         神 -->
+        <!--                         笔 -->
+    </Design.DataContext>
+
+
+    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+</Window>

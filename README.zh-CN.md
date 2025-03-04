@@ -1,4 +1,4 @@
-﻿# yaeramaker - 又一个eramaker模拟器
+﻿# yaEmuera - 又一个eramaker模拟器
 ## ⚠️极早期开发阶段，绝大多数功能尚未实现。⚠️
 
 ---

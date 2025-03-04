@@ -1,10 +1,9 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using YetAnotherEramakerSimulator.ViewModels;
-using YetAnotherEramakerSimulator.Views;
+using YaEmuera.Views;
 
-namespace YetAnotherEramakerSimulator;
+namespace YaEmuera;
 
 public partial class App : Application
 {
@@ -15,12 +14,15 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        if (Resources[nameof(Composition)] is Composition composition)
         {
-            desktop.MainWindow = new MainWindow
+            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                DataContext = new MainWindowViewModel(),
-            };
+                desktop.MainWindow = new MainWindow()
+                {
+                    DataContext = composition.MainWindowViewModel
+                };
+            }
         }
 
         base.OnFrameworkInitializationCompleted();
