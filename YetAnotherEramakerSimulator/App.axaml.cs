@@ -1,10 +1,10 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using YetAnotherEramaker.ViewModels;
-using YetAnotherEramaker.Views;
+using YetAnotherEramakerSimulator.ViewModels;
+using YetAnotherEramakerSimulator.Views;
 
-namespace YetAnotherEramaker;
+namespace YetAnotherEramakerSimulator;
 
 public partial class App : Application
 {

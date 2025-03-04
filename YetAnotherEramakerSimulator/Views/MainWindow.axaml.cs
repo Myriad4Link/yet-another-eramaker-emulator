@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace YetAnotherEramaker.Views;
+namespace YetAnotherEramakerSimulator.Views;
 
 public partial class MainWindow : Window
 {

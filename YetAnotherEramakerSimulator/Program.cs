@@ -2,7 +2,7 @@
 using Avalonia;
 using Avalonia.ReactiveUI;
 
-namespace YetAnotherEramaker;
+namespace YetAnotherEramakerSimulator;
 
 sealed class Program
 {

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YetAnotherEramaker", "YetAnotherEramaker\YetAnotherEramaker.csproj", "{10C4F51D-1890-4759-B29A-C7B1A9A148DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YetAnotherEramakerSimulator", "YetAnotherEramakerSimulator\YetAnotherEramakerSimulator.csproj", "{10C4F51D-1890-4759-B29A-C7B1A9A148DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

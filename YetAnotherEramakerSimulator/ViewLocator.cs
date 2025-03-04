@@ -1,9 +1,9 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using YetAnotherEramaker.ViewModels;
+using YetAnotherEramakerSimulator.ViewModels;
 
-namespace YetAnotherEramaker;
+namespace YetAnotherEramakerSimulator;
 
 public class ViewLocator : IDataTemplate
 {
