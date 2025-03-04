@@ -1,3 +1,6 @@
+using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Markup.Xaml;
 using YetAnotherEramaker.ViewModels;
 using YetAnotherEramaker.Views;
 
