@@ -1,7 +1,6 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using YaEmuera.Views;
 
 namespace YaEmuera;
 
@@ -18,10 +17,15 @@ public partial class App : Application
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new MainWindow()
+                desktop.MainWindow = composition.MainWindow;
+                var vm = composition.MainWindowViewModel;
+
+                if (desktop.MainWindow.Screens.Primary != null)
                 {
-                    DataContext = composition.MainWindowViewModel
-                };
+                    // Which it should never be null.
+                    vm.PrimaryScreenResolutionWidth = desktop.MainWindow.Screens.Primary.Bounds.Width;
+                    vm.PrimaryScreenResolutionHeight = desktop.MainWindow.Screens.Primary.Bounds.Height;
+                }
             }
         }
 

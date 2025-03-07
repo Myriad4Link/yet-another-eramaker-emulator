@@ -1,6 +1,6 @@
 ﻿using Pure.DI;
-using YaEmuera.Properties.Implementations;
 using YaEmuera.ViewModels;
+using YaEmuera.Views;
 
 namespace YaEmuera;
 
@@ -8,7 +8,6 @@ public partial class Composition
 {
     private void Setup() => DI.Setup()
         .Root<MainWindowViewModel>(nameof(MainWindowViewModel))
-        .Bind(nameof(TextBoxForegroundColorProperty)).To<TextBoxForegroundColorProperty>()
-        .Bind(nameof(TextBoxBackgroundColorProperty)).To<TextBoxBackgroundColorProperty>()
-        .Bind(nameof(TextBoxBorderBackgroundColorProperty)).To<TextBoxBorderBackgroundColorProperty>();
+        .Root<MainWindow>(nameof(MainWindow))
+        .Bind().As(Lifetime.Singleton).To<MainWindowViewModel>();
 }
