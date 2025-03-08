@@ -7,5 +7,9 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        if (DataContext is Composition composition)
+        {
+            composition.MainWindowViewModel.MainWindow = this;
+        }
     }
 }

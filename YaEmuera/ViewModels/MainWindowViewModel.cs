@@ -1,5 +1,10 @@
-﻿using Avalonia.Media;
+﻿using System.Reactive;
+using Avalonia.Media;
+using MsBox.Avalonia;
+using MsBox.Avalonia.Dto;
+using MsBox.Avalonia.Enums;
 using ReactiveUI;
+using YaEmuera.Views;
 
 namespace YaEmuera.ViewModels;
 
@@ -15,6 +20,29 @@ public class MainWindowViewModel : ViewModelBase
 
     private int _menuItemHeight = DefaultMenuItemHeight;
     private int _secondaryMenuItemWidth = DefaultSecondaryMenuItemWidth;
+
+    public MainWindowViewModel()
+    {
+        RestartCommand = ReactiveCommand.Create(() =>
+        {
+            if (MainWindow != null)
+                MessageBoxManager.GetMessageBoxStandard(
+                    new MessageBoxStandardParams
+                    {
+                        ContentTitle = "Restart Confirmation",
+                        ContentMessage = """
+                                         You are about to restart yaEmuera. All progress unsaved will be loss.
+                                         Are you sure to do this?
+                                         """,
+                        Topmost = true,
+                        CanResize = false,
+                        ShowInCenter = true,
+                        ButtonDefinitions = ButtonEnum.OkCancel
+                    }).ShowWindowDialogAsync(MainWindow);
+        });
+    }
+
+    public MainWindow? MainWindow { private get; set; }
 
     public Color TextBoxForegroundColorProperty { get; set; } = Colors.White;
     public Color TextBoxBackgroundColorProperty { get; set; } = Colors.Black;
@@ -42,4 +70,6 @@ public class MainWindowViewModel : ViewModelBase
     {
         set => MenuItemHeight = value * MenuItemHeight / DefaultScreenResolutionHeight;
     }
+
+    public ReactiveCommand<Unit, Unit> RestartCommand { get; }
 }
