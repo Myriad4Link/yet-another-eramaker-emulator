@@ -7,15 +7,15 @@ public class MainWindowViewModel : ViewModelBase
 {
     // Set the size of menu items dynamically according to screen resolution. 
     // Base resolution: 1920x1080
-    private const int DefaultSecondaryMenuItemWidth = 268;
-
+    private const int DefaultSecondaryMenuItemWidth = 272;
     private const int DefaultMenuItemHeight = 23;
 
     private const int DefaultScreenResolutionWidth = 1920;
-
     private const int DefaultScreenResolutionHeight = 1080;
+
     private int _menuItemHeight = DefaultMenuItemHeight;
     private int _secondaryMenuItemWidth = DefaultSecondaryMenuItemWidth;
+
     public Color TextBoxForegroundColorProperty { get; set; } = Colors.White;
     public Color TextBoxBackgroundColorProperty { get; set; } = Colors.Black;
 
