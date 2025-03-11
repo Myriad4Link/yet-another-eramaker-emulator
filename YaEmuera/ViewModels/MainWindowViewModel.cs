@@ -1,9 +1,8 @@
 ﻿using System.Reactive;
 using Avalonia.Media;
-using MsBox.Avalonia;
-using MsBox.Avalonia.Dto;
-using MsBox.Avalonia.Enums;
 using ReactiveUI;
+using YaEmuera.ViewModels.Services.ScreenResolution;
+using YaEmuera.ViewModels.Services.ScreenResolution.EventArgs;
 using YaEmuera.Views;
 
 namespace YaEmuera.ViewModels;
@@ -17,29 +16,15 @@ public class MainWindowViewModel : ViewModelBase
 
     private const int DefaultScreenResolutionWidth = 1920;
     private const int DefaultScreenResolutionHeight = 1080;
+    public readonly IScreenResolutionChangeNotifier ScreenResolutionChangeNotifier;
 
     private int _menuItemHeight = DefaultMenuItemHeight;
     private int _secondaryMenuItemWidth = DefaultSecondaryMenuItemWidth;
 
-    public MainWindowViewModel()
+    public MainWindowViewModel(IScreenResolutionChangeNotifier screenResolutionChangeNotifier)
     {
-        RestartCommand = ReactiveCommand.Create(() =>
-        {
-            if (MainWindow != null)
-                MessageBoxManager.GetMessageBoxStandard(
-                    new MessageBoxStandardParams
-                    {
-                        ContentTitle = "Restart Confirmation",
-                        ContentMessage = """
-                                         You are about to restart yaEmuera. All progress unsaved will be loss.
-                                         Are you sure to do this?
-                                         """,
-                        Topmost = true,
-                        CanResize = false,
-                        ShowInCenter = true,
-                        ButtonDefinitions = ButtonEnum.OkCancel
-                    }).ShowWindowDialogAsync(MainWindow);
-        });
+        ScreenResolutionChangeNotifier = screenResolutionChangeNotifier;
+        ScreenResolutionChangeNotifier.ScreenSolutionChanged += OnScreenResolutionChanged;
     }
 
     public MainWindow? MainWindow { private get; set; }
@@ -61,15 +46,19 @@ public class MainWindowViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _menuItemHeight, value);
     }
 
-    public int PrimaryScreenResolutionWidth
-    {
-        set => SecondaryMenuItemWidth = value * SecondaryMenuItemWidth / DefaultScreenResolutionWidth;
-    }
+    public ReactiveCommand<Unit, Unit> RestartCommand { get; } = ReactiveCommand.Create(() => { });
 
-    public int PrimaryScreenResolutionHeight
+    private void OnScreenResolutionChanged(object? _, ScreenResolutionChangedEventArgs e)
     {
-        set => MenuItemHeight = value * MenuItemHeight / DefaultScreenResolutionHeight;
+        switch (e)
+        {
+            case ScreenResolutionWidthChangedEventArgs widthChangedEventArgs:
+                SecondaryMenuItemWidth = DefaultSecondaryMenuItemWidth * widthChangedEventArgs.Value /
+                                         DefaultScreenResolutionWidth;
+                break;
+            case ScreenResolutionHeightChangedEventArgs heightChangedEventArgs:
+                MenuItemHeight = DefaultMenuItemHeight * heightChangedEventArgs.Value / DefaultScreenResolutionHeight;
+                break;
+        }
     }
-
-    public ReactiveCommand<Unit, Unit> RestartCommand { get; }
 }

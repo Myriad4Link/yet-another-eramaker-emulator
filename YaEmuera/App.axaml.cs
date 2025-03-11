@@ -23,8 +23,10 @@ public partial class App : Application
                 if (desktop.MainWindow.Screens.Primary != null)
                 {
                     // Which it should never be null.
-                    vm.PrimaryScreenResolutionWidth = desktop.MainWindow.Screens.Primary.Bounds.Width;
-                    vm.PrimaryScreenResolutionHeight = desktop.MainWindow.Screens.Primary.Bounds.Height;
+                    vm.ScreenResolutionChangeNotifier.ScreenWidth =
+                        desktop.MainWindow.Screens.Primary.WorkingArea.Width;
+                    vm.ScreenResolutionChangeNotifier.ScreenHeight =
+                        desktop.MainWindow.Screens.Primary.WorkingArea.Height;
                 }
             }
         }
