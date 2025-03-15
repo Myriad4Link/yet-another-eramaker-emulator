@@ -24,6 +24,11 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.5"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0-preview.1.25080.5"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0-preview.1.25080.5"/>
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.0-preview.1.25080.5"/>
+        <PackageReference Include="NLog" Version="5.4.0"/>
+        <PackageReference Include="NLog.Extensions.Logging" Version="5.4.0"/>
         <PackageReference Include="Pure.DI" Version="2.1.59">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

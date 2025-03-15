@@ -1,5 +1,6 @@
 ﻿using System.Reactive;
 using Avalonia.Media;
+using NLog;
 using ReactiveUI;
 using YaEmuera.ViewModels.Services.ScreenResolution;
 using YaEmuera.ViewModels.Services.ScreenResolution.EventArgs;
@@ -7,7 +8,7 @@ using YaEmuera.Views;
 
 namespace YaEmuera.ViewModels;
 
-public class MainWindowViewModel : ViewModelBase
+public class MainWindowViewModel : AbstractMainWindowViewModel
 {
     // Set the size of menu items dynamically according to screen resolution. 
     // Base resolution: 1920x1080
@@ -21,10 +22,12 @@ public class MainWindowViewModel : ViewModelBase
     private int _menuItemHeight = DefaultMenuItemHeight;
     private int _secondaryMenuItemWidth = DefaultSecondaryMenuItemWidth;
 
-    public MainWindowViewModel(IScreenResolutionChangeNotifier screenResolutionChangeNotifier)
+    public MainWindowViewModel(IScreenResolutionChangeNotifier screenResolutionChangeNotifier, ILogger logger)
     {
         ScreenResolutionChangeNotifier = screenResolutionChangeNotifier;
         ScreenResolutionChangeNotifier.ScreenSolutionChanged += OnScreenResolutionChanged;
+
+        logger.Debug("MainWindowViewModel created");
     }
 
     public MainWindow? MainWindow { private get; set; }
