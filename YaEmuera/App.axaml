@@ -12,8 +12,4 @@
     <Application.Styles>
         <SimpleTheme />
     </Application.Styles>
-
-    <Application.Resources>
-        <yaEmuera:Composition x:Key="Composition" />
-    </Application.Resources>
 </Application>

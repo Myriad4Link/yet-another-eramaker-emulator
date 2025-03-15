@@ -13,21 +13,21 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        if (Resources[nameof(Composition)] is Composition composition)
-        {
-            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-            {
-                desktop.MainWindow = composition.MainWindow;
-                var vm = composition.MainWindowViewModel;
+        var composition = new Composition(defaultWidth: 1920, defaultHeight: 1080);
+        Resources.Add(nameof(Composition), composition);
 
-                if (desktop.MainWindow.Screens.Primary != null)
-                {
-                    // Which it should never be null.
-                    vm.ScreenResolutionChangeNotifier.ScreenWidth =
-                        desktop.MainWindow.Screens.Primary.WorkingArea.Width;
-                    vm.ScreenResolutionChangeNotifier.ScreenHeight =
-                        desktop.MainWindow.Screens.Primary.WorkingArea.Height;
-                }
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            desktop.MainWindow = composition.MainWindow;
+            var vm = composition.MainWindowViewModel;
+
+            if (desktop.MainWindow.Screens.Primary != null)
+            {
+                // Which it should never be null.
+                vm.ScreenResolutionChangeNotifier.ScreenWidth =
+                    desktop.MainWindow.Screens.Primary.Bounds.Width;
+                vm.ScreenResolutionChangeNotifier.ScreenHeight =
+                    desktop.MainWindow.Screens.Primary.Bounds.Height;
             }
         }
 
